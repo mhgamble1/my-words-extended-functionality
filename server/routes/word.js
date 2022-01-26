@@ -40,9 +40,14 @@ wordRoutes.route("/word/:id").get(function (req, res) {
 wordRoutes.route("/word/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    person_name: req.body.person_name,
-    person_position: req.body.person_position,
-    person_level: req.body.person_level,
+    // person_name: req.body.person_name,
+    // person_position: req.body.person_position,
+    // person_level: req.body.person_level,
+
+    word: req.body.word,
+    source: req.body.source,
+    language: req.body.language,
+    datetime: req.body.datetime,
   };
   db_connect.collection("words").insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -56,9 +61,14 @@ wordRoutes.route("/update/:id").post(function (req, response) {
   let myquery = { _id: ObjectId( req.params.id )};
   let newvalues = {
     $set: {
-      person_name: req.body.person_name,
-      person_position: req.body.person_position,
-      person_level: req.body.person_level,
+      // person_name: req.body.person_name,
+      // person_position: req.body.person_position,
+      // person_level: req.body.person_level,
+
+      word: req.body.word,
+      source: req.body.source,
+      language: req.body.language,
+      datetime: req.body.datetime,
     },
   };
   db_connect
