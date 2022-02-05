@@ -14,7 +14,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the words.
 wordRoutes.route("/word").get(function (req, res) {
-  let db_connect = dbo.getDb("employees");
+  let db_connect = dbo.getDb("employee");
   db_connect
     .collection(process.env.CURRENT_DB_NAME)
     .find({})

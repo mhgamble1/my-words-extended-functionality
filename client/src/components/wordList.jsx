@@ -5,13 +5,11 @@ import { Link } from "react-router-dom";
 
 const Word = (props) => (
   <tr>
-    {/* <td>{props.record.person_name}</td>
-    <td>{props.record.person_position}</td>
-    <td>{props.record.person_level}</td> */}
-    <td>{props.word.word}</td>
-    <td>{props.word.source}</td>
-    <td>{props.word.language}</td>
-    <td>{props.word.datetime}</td>
+    <td>{props.word.Text}</td>
+    <td>{props.word.Title}</td>
+    <td>{props.word.Author}</td>
+    <td>{props.word.Date}</td>
+    <td>{props.word.Time}</td>
     <td>
       <Link to={"/edit/" + props.word._id}>Edit</Link> |
       <a
@@ -78,10 +76,11 @@ export default class WordList extends Component {
         <table className="table table-striped" style={{ marginTop: 20 }}>
           <thead>
             <tr>
-              <th>Word</th>
-              <th>Source</th>
-              <th>Language</th>
+              <th>Text</th>
+              <th>Title</th>
+              <th>Author</th>
               <th>Date</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>{this.wordList()}</tbody>
