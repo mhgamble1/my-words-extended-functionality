@@ -18,7 +18,7 @@ export default class WordList extends Component {
   constructor(props) {
     super(props);
     this.deleteWord = this.deleteWord.bind(this);
-    this.state = { words: [] };
+    this.state = { words: [], sortedWords: [] };
   }
 
   // This method will get the data from the database.
