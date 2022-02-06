@@ -10,7 +10,7 @@ const Word = (props) => (
     <td>{props.word.Author}</td>
     <td>{props.word.Date}</td>
     <td>{props.word.Time}</td>
-    <td>
+    {/* <td>
       <Link to={"/edit/" + props.word._id}>Edit</Link> |
       <a
         href="/"
@@ -20,7 +20,7 @@ const Word = (props) => (
       >
         Delete
       </a>
-    </td>
+    </td> */}
   </tr>
 );
 

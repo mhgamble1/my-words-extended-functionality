@@ -16,7 +16,7 @@ const App = () => {
       <Route exact path="/">
         <WordList />
       </Route>
-      <Route path="/edit/:id" component={Edit} />
+      {/* <Route path="/edit/:id" component={Edit} /> */}
       <Route path="/create">
         <Create />
       </Route>
