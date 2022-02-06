@@ -10,17 +10,6 @@ const Word = (props) => (
     <td>{props.word.Author}</td>
     <td>{props.word.Date}</td>
     <td>{props.word.Time}</td>
-    {/* <td>
-      <Link to={"/edit/" + props.word._id}>Edit</Link> |
-      <a
-        href="/"
-        onClick={() => {
-          props.deleteWord(props.word._id);
-        }}
-      >
-        Delete
-      </a>
-    </td> */}
   </tr>
 );
 
