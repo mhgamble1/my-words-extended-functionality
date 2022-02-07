@@ -28,6 +28,10 @@ const useSortableData = (items, config = null) => {
 	return { items: sortedItems, requestSort };
 }
 
+const showDefinition = Text => {
+
+}
+
 export default function WordTable(props) {
 	const { words } = props;
 	const { items, requestSort } = useSortableData(words);
@@ -60,13 +64,18 @@ export default function WordTable(props) {
 				<tbody>
 					{items.map(currentword => {
 						return (
-							<tr key={currentword._id}>
-								<td>{currentword.Text}</td>
-								<td>{currentword.Title}</td>
-								<td>{currentword.Author}</td>
-								<td>{currentword.Date}</td>
-								<td>{currentword.Time}</td>
-							</tr>
+							<>
+								<tr key={currentword._id}>
+									<td>{currentword.Text}</td>
+									{/* <td><button type="button" onClick={() => showDefinition(currentword.Text)}>
+									</button></td> */}
+									<td>{currentword.Title}</td>
+									<td>{currentword.Author}</td>
+									<td>{currentword.Date}</td>
+									<td>{currentword.Time}</td>
+								</tr>
+								{/* <p>definition</p> */}
+							</>
 						)
 					})}
 				</tbody>
