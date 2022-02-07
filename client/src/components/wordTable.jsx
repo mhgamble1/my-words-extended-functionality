@@ -1,20 +1,37 @@
 import React from "react";
+
+// allows for sorting tables in ascending and descending order
+const useSortableData = (items, config = null) => {
+	const [sortConfig, setSortConfig] = React.useState(null);
+
+	const sortedItems = React.useMemo(() => {
+		let sortableItems = [...items];
+		if (sortConfig != null) {
+			sortableItems.sort((a, b) => {
+				let sortPrelim = a[sortConfig.key].localeCompare(b[sortConfig.key], 'en', { 'sensitivity': 'base' });
+				// if direction is ascending return normal compare. else return opposite
+				return sortConfig.direction === 'ascending' ? sortPrelim : -1 * sortPrelim;
+			})
+		}
+		return sortableItems;
+	}, [items, sortConfig]);
+
+	// button click calls this
+	const requestSort = key => {
+		let direction = 'ascending';
+		if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
+			direction = 'descending';
+		}
+		setSortConfig({ key, direction });
+	}
+
+	return { items: sortedItems, requestSort };
+}
+
 export default function WordTable(props) {
 	const { words } = props;
-	const [sortedField, setSortedField] = React.useState(null);
-	let sortedWords = [...words];
-	if (sortedField != null) {
-		sortedWords.sort((a, b) => {
-			// if (a[sortedField] < b[sortedField]) {
-			// 	return -1;
-			// }
-			// if (a[sortedField] > b[sortedField]) {
-			// 	return 1;
-			// }
-			// return 0;
-			return a[sortedField].localeCompare(b[sortedField], 'en', {'sensitivity': 'base'});
-		})
-	}
+	const { items, requestSort } = useSortableData(words);
+
 	return (
 		<div>
 			<h3>Word List</h3>
@@ -22,27 +39,26 @@ export default function WordTable(props) {
 				<thead>
 					<tr>
 						<th>
-							<button type="button" onClick={() => setSortedField('Text')}>
+							<button type="button" onClick={() => requestSort('Text')}>
 								Text
 							</button>
 						</th>
-						<th><button type="button" onClick={() => setSortedField('Title')}>
+						<th><button type="button" onClick={() => requestSort('Title')}>
 							Title
 						</button></th>
-						<th><button type="button" onClick={() => setSortedField('Author')}>
+						<th><button type="button" onClick={() => requestSort('Author')}>
 							Author
 						</button></th>
-						<th><button type="button" onClick={() => setSortedField('Date')}>
+						<th><button type="button" onClick={() => requestSort('Date')}>
 							Date
 						</button></th>
-						<th><button type="button" onClick={() => setSortedField('Time')}>
+						<th><button type="button" onClick={() => requestSort('Time')}>
 							Time
 						</button></th>
 					</tr>
 				</thead>
 				<tbody>
-					{console.log(sortedWords)}
-					{sortedWords.map(currentword => {
+					{items.map(currentword => {
 						return (
 							<tr key={currentword._id}>
 								<td>{currentword.Text}</td>
