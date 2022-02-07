@@ -2,6 +2,18 @@ import React from "react";
 export default function WordTable(props) {
 	const { words } = props;
 	const [sortedField, setSortedField] = React.useState(null);
+	let sortedWords = [...words];
+	if (sortedField != null) {
+		sortedWords.sort((a, b) => {
+			if (a[sortedField] < b[sortedField]) {
+				return -1;
+			}
+			if (a[sortedField] > b[sortedField]) {
+				return 1;
+			}
+			return 0;
+		})
+	}
 	return (
 		<div>
 			<h3>Word List</h3>
@@ -28,7 +40,8 @@ export default function WordTable(props) {
 					</tr>
 				</thead>
 				<tbody>
-					{words.map(currentword => {
+					{console.log(sortedWords)}
+					{sortedWords.map(currentword => {
 						return (
 							<tr key={currentword._id}>
 								<td>{currentword.Text}</td>
