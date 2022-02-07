@@ -2,23 +2,14 @@ import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
-const Word = (props) => (
-  <tr>
-    <td>{props.word.Text}</td>
-    <td>{props.word.Title}</td>
-    <td>{props.word.Author}</td>
-    <td>{props.word.Date}</td>
-    <td>{props.word.Time}</td>
-  </tr>
-);
+import WordTable from "./wordTable";
 
 export default class WordList extends Component {
   // This is the constructor that shall store our data retrieved from the database
   constructor(props) {
     super(props);
     this.deleteWord = this.deleteWord.bind(this);
-    this.state = { words: [], sortedWords: [] };
+    this.state = { words: [] };
   }
 
   // This method will get the data from the database.
@@ -44,37 +35,10 @@ export default class WordList extends Component {
     });
   }
 
-  // This method will map out the users on the table
-  wordList() {
-    return this.state.words.map((currentword) => {
-      return (
-        <Word
-          word={currentword}
-          deleteWord={this.deleteWord}
-          key={currentword._id}
-        />
-      );
-    });
-  }
-
   // This following section will display the table with the words.
   render() {
     return (
-      <div>
-        <h3>Word List</h3>
-        <table className="table table-striped" style={{ marginTop: 20 }}>
-          <thead>
-            <tr>
-              <th>Text</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Date</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>{this.wordList()}</tbody>
-        </table>
-      </div>
+      <WordTable words={this.state.words} deleteWord={this.deleteWord}/>
     );
   }
 }
