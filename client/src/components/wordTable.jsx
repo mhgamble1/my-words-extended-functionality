@@ -5,13 +5,14 @@ export default function WordTable(props) {
 	let sortedWords = [...words];
 	if (sortedField != null) {
 		sortedWords.sort((a, b) => {
-			if (a[sortedField] < b[sortedField]) {
-				return -1;
-			}
-			if (a[sortedField] > b[sortedField]) {
-				return 1;
-			}
-			return 0;
+			// if (a[sortedField] < b[sortedField]) {
+			// 	return -1;
+			// }
+			// if (a[sortedField] > b[sortedField]) {
+			// 	return 1;
+			// }
+			// return 0;
+			return a[sortedField].localeCompare(b[sortedField], 'en', {'sensitivity': 'base'});
 		})
 	}
 	return (
