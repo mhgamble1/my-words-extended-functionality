@@ -64,7 +64,7 @@ export default function WordTable(props) {
 							<tr key={currentword._id}>
 								{/* make the text one a link */}
 								{/* <td>{currentword.Text}</td> */}
-								<td> <Link to={`/word/${currentword._id}`}>{currentword.Text}</Link> </td>
+								<td> <Link to={{pathname: `/word/${currentword._id}`, state: {currentword}}}>{currentword.Text}</Link> </td>
 								<td>{currentword.Title}</td>
 								<td>{currentword.Author}</td>
 								<td>{currentword.Date}</td>
