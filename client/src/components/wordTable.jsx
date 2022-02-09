@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 // allows for sorting tables in ascending and descending order
 const useSortableData = (items, config = null) => {
@@ -60,16 +61,15 @@ export default function WordTable(props) {
 				<tbody>
 					{items.map(currentword => {
 						return (
-							<>
-								<tr key={currentword._id}>
-									{/* make the text one a link */}
-									<td>{currentword.Text}</td>
-									<td>{currentword.Title}</td>
-									<td>{currentword.Author}</td>
-									<td>{currentword.Date}</td>
-									<td>{currentword.Time}</td>
-								</tr>
-							</>
+							<tr key={currentword._id}>
+								{/* make the text one a link */}
+								{/* <td>{currentword.Text}</td> */}
+								<td> <Link to={`/word/${currentword.Text}`}>{currentword.Text}</Link> </td>
+								<td>{currentword.Title}</td>
+								<td>{currentword.Author}</td>
+								<td>{currentword.Date}</td>
+								<td>{currentword.Time}</td>
+							</tr>
 						)
 					})}
 				</tbody>
