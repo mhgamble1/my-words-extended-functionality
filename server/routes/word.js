@@ -40,7 +40,7 @@ wordRoutes.route("/word/").get(function (req, res) {
 // This section will help you get a single word by id
 wordRoutes.route("/word/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
+  let myquery = { _id: req.params.id };
   db_connect
     .collection("vocab")
     .findOne(myquery, function (err, result) {
