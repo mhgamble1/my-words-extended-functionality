@@ -27,7 +27,7 @@ const App = () => {
         <Route exact path="/">
           <WordList />
         </Route>
-        <Route path="/word/:id">
+        <Route path="/word/:_id">
           <FullPageWord />
         </Route>
       </React.Fragment>
