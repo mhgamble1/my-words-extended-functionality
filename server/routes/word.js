@@ -13,7 +13,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 
 // This section will help you get a list of all the words.
-wordRoutes.route("/word").get(function (req, res) {
+wordRoutes.route("/word/").get(function (req, res) {
   let db_connect = dbo.getDb("employee");
   db_connect
     .collection(process.env.CURRENT_DB_NAME)
@@ -24,16 +24,29 @@ wordRoutes.route("/word").get(function (req, res) {
     });
 });
 
+// // This section will get a single word by Text
+// wordRoutes.route("/word/:Text").get(function (req, res) {
+//   console.log("reached here");
+//   // console.log(req.params.Text);
+//   let db_connect = dbo.getDb();
+//   // try with hardcoded query
+//   let myquery = { Text: "lacunae" };
+//   db_connect.collection("words").findOne(myquery, function (err, result) {
+//     if (err) throw err;
+//     res.json(result);
+//   })
+// })
+
 // This section will help you get a single word by id
 wordRoutes.route("/word/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { _id: ObjectId(req.params.id) };
   db_connect
-      .collection("words")
-      .findOne(myquery, function (err, result) {
-        if (err) throw err;
-        res.json(result);
-      });
+    .collection("vocab")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
 });
 
 // This section will help you create a new word.
@@ -49,7 +62,7 @@ wordRoutes.route("/word/add").post(function (req, response) {
     language: req.body.language,
     datetime: req.body.datetime,
   };
-  db_connect.collection("words").insertOne(myobj, function (err, res) {
+  db_connect.collection("vocab").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
   });
@@ -58,7 +71,7 @@ wordRoutes.route("/word/add").post(function (req, response) {
 // This section will help you update a word by id.
 wordRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { _id: ObjectId(req.params.id) };
   let newvalues = {
     $set: {
       // person_name: req.body.person_name,
@@ -72,7 +85,7 @@ wordRoutes.route("/update/:id").post(function (req, response) {
     },
   };
   db_connect
-    .collection("words")
+    .collection("vocab")
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
@@ -83,8 +96,8 @@ wordRoutes.route("/update/:id").post(function (req, response) {
 // This section will help you delete a word
 wordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId( req.params.id )};
-  db_connect.collection("words").deleteOne(myquery, function (err, obj) {
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect.collection("vocab").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
     response.status(obj);
