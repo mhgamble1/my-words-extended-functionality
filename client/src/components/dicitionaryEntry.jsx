@@ -39,14 +39,26 @@ export default function DictionaryEntry(props) {
 							<p>{element["partOfSpeech"]}</p>
 							{/* map over definitions */}
 							<ol>
-							{element["definitions"].map((element, index) => {
-								return (
-									<li key={index}>
-										<p>{element["definition"]}</p>
-										<p>example: {element["example"]}</p>
-									</li>	
-								)
-							})}
+								{element["definitions"].map((element, index) => {
+									return (
+										<li key={index}>
+											<p>{element["definition"]}</p>
+											<p>example: {element["example"]}</p>
+											{/* map over synonyms */}
+											<ul>
+												{element["synonyms"].map((element, index) => {
+													<li key={index}>{element}</li>
+												})}
+											</ul>
+											{/* map over antonyms */}
+											<ul>
+												{element["antonyms"].map((element, index) => {
+													<li key={index}>{element}</li>
+												})}
+											</ul>
+										</li>
+									)
+								})}
 							</ol>
 						</li>
 					)
