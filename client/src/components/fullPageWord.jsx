@@ -2,6 +2,7 @@ import * as React from 'react'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
+import DictionaryEntry from './dicitionaryEntry';
 
 export default function FullPageWord() {
 	// const [ID, setID] = React.useState();
@@ -26,12 +27,26 @@ export default function FullPageWord() {
 
 	return (
 		<div>
-			<p>{_id}</p>
+			{/* <p>{_id}</p>
 			<p>{currentword.Text}</p>
 			<p>{currentword.Title}</p>
 			<p>{currentword.Author}</p>
 			<p>{currentword.Date}</p>
-			<p>{currentword.Time}</p>
+			<p>{currentword.Time}</p> */}
+			{/* here we return a dictionary entry object whose props are: */}
+			{data != null &&
+				<DictionaryEntry data={data} />
+			}
+			
+			{/* {data != null &&
+				<>
+					<p>{data[0].word}</p>
+					<p>{data[0].phonetic}</p>
+					<p>{data[0].origin}</p>
+					<p>{data[0].meanings[0].partOfSpeech}</p>
+					<p>{data[0].meanings[0].definitions[0].definition}</p>
+				</>
+			} */}
 		</div>
 	)
 } 
