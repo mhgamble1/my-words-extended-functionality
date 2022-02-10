@@ -16,7 +16,7 @@ export default function DictionaryEntry(props) {
 			{/* return phonetic for now */}
 			<p>{data.phonetic}</p>
 
-			{/* now we will map over phonetics */}
+			{/* map over phonetics */}
 
 			<p>phonetics: </p>
 			<ol>
@@ -25,6 +25,29 @@ export default function DictionaryEntry(props) {
 						<li key={index}>
 							<p>{element.text}</p>
 							<p>{element.audio}</p>
+						</li>
+					)
+				})}
+			</ol>
+
+			{/* map over meanings*/}
+			<p>meanings:</p>
+			<ol>
+				{meanings.map((element, index) => {
+					return (
+						<li key={index}>
+							<p>{element["partOfSpeech"]}</p>
+							{/* map over definitions */}
+							<ol>
+							{element["definitions"].map((element, index) => {
+								return (
+									<li key={index}>
+										<p>{element["definition"]}</p>
+										<p>example: {element["example"]}</p>
+									</li>	
+								)
+							})}
+							</ol>
 						</li>
 					)
 				})}
