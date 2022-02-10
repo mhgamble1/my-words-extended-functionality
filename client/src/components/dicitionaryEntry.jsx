@@ -1,3 +1,5 @@
+import Player from '../utils/useAudio';
+
 export default function DictionaryEntry(props) {
 	// if (props == null) {
 	// 	return null;
@@ -23,12 +25,16 @@ export default function DictionaryEntry(props) {
 				{phonetics.map((element, index) => {
 					return (
 						<li key={index}>
+							{/* <p>{element.audio}</p> */}
+							<Player url={element.audio} word={data.word}/>
 							<p>{element.text}</p>
-							<p>{element.audio}</p>
 						</li>
 					)
 				})}
 			</ol>
+
+			{/* display origin */}
+			<p>origin: {origin}</p>
 
 			{/* map over meanings*/}
 			<p>meanings:</p>
