@@ -4,15 +4,15 @@ import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 
 export default function FullPageWord() {
-	const [ID, setID] = React.useState();
+	// const [ID, setID] = React.useState();
 	const [data, setData] = React.useState(null);
 	const { _id } = useParams();
 	const location = useLocation();
 	const { currentword } = location.state;
 
 	React.useEffect(() => {
-		setID(_id);
-		axios
+		// setID(_id);
+		axios // still need to deal with a "not found" response
 			.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${currentword.Text}`)
 			.then((response) => {
 				console.log(response.data)
