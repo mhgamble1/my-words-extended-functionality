@@ -6,7 +6,7 @@ export default function DictionaryEntry(props) {
 	let data = props.data[0];
 
 	// if data contains phonetics fields
-	let { phonetics } = data;
+	let { word, phonetic, phonetics, origin, meanings } = data;
 
 	return (
 		<>
