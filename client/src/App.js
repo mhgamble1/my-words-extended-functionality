@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom";
+import ChartTest from "./components/chartTest";
 import FullPageWord from "./components/fullPageWord";
 
 // We import all the components we need in our app
@@ -29,6 +30,9 @@ const App = () => {
         </Route>
         <Route path="/word/:_id">
           <FullPageWord />
+        </Route>
+        <Route path="/charttest">
+          <ChartTest/>
         </Route>
       </React.Fragment>
     </Router>
