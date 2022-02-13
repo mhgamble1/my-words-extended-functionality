@@ -26,7 +26,7 @@ export default function FullPageWord() {
 	return (
 		<div>
 			{data != null &&
-				<DictionaryEntry data={data} />
+				<DictionaryEntry data={data} currentword={currentword}/>
 			}
 		</div>
 	)
