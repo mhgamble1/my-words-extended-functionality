@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import './styles/App.css'
 
 // We use Route in order to define the different routes of our application
@@ -15,26 +16,20 @@ import WordList from "./components/wordList";
 
 const App = () => {
   return (
-    // <div>
-    //   <Navbar />
-    //   <Route exact path="/">
-    //     <WordList />
-    //   </Route>
-
-    //   <FullPageWord />
-    // </div>
     <Router>
       <React.Fragment>
-        <Navbar />
-        <Route exact path="/">
-          <WordList />
-        </Route>
-        <Route path="/word/:_id">
-          <FullPageWord />
-        </Route>
-        <Route path="/chartdashboard">
-          <ChartDashboard/>
-        </Route>
+        <Container>
+          <Navbar />
+          <Route exact path="/">
+            <WordList />
+          </Route>
+          <Route path="/word/:_id">
+            <FullPageWord />
+          </Route>
+          <Route path="/chartdashboard">
+            <ChartDashboard />
+          </Route>
+        </Container>
       </React.Fragment>
     </Router>
   );
