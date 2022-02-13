@@ -12,7 +12,6 @@ export default function FullPageWord() {
 	const { currentword } = location.state;
 
 	React.useEffect(() => {
-		// setID(_id);
 		axios // still need to deal with a "not found" response
 			.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${currentword.Text}`)
 			.then((response) => {
@@ -27,26 +26,9 @@ export default function FullPageWord() {
 
 	return (
 		<div>
-			{/* <p>{_id}</p>
-			<p>{currentword.Text}</p>
-			<p>{currentword.Title}</p>
-			<p>{currentword.Author}</p>
-			<p>{currentword.Date}</p>
-			<p>{currentword.Time}</p> */}
-			{/* here we return a dictionary entry object whose props are: */}
 			{data != null &&
 				<DictionaryEntry data={data} />
 			}
-			
-			{/* {data != null &&
-				<>
-					<p>{data[0].word}</p>
-					<p>{data[0].phonetic}</p>
-					<p>{data[0].origin}</p>
-					<p>{data[0].meanings[0].partOfSpeech}</p>
-					<p>{data[0].meanings[0].definitions[0].definition}</p>
-				</>
-			} */}
 		</div>
 	)
 } 
