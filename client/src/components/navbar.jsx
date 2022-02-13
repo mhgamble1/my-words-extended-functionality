@@ -14,7 +14,8 @@ const Navbar = () => {
         <NavLink className="navbar-brand" to="/">
           My Words
         </NavLink>
-        <button
+        <NavLink className="navbar-brand" to="/chartdashboard">Charts</NavLink>
+        {/* <button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
@@ -24,7 +25,7 @@ const Navbar = () => {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
       </nav>
     </div>
   );
