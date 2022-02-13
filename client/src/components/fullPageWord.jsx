@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import DictionaryEntry from './dicitionaryEntry';
 
 export default function FullPageWord() {
-	// const [ID, setID] = React.useState();
 	const [data, setData] = React.useState(null);
 	const { _id } = useParams();
 	const location = useLocation();
