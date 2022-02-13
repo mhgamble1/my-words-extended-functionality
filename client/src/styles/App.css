@@ -2,3 +2,8 @@ a:link, a:visited {
 	text-decoration: none;
 	color: black;
 }
+
+em {
+	font-weight: bold;
+	font-style: normal;
+}
