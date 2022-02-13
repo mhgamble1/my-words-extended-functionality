@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Button, Table } from "react-bootstrap";
 
 // allows for sorting tables in ascending and descending order
 const useSortableData = (items, config = null) => {
@@ -36,26 +37,26 @@ export default function WordTable(props) {
 	return (
 		<div>
 			<h3>Word List</h3>
-			<table>
+			<Table striped bordered hover>
 				<thead>
 					<tr>
 						<th>
-							<button type="button" onClick={() => requestSort('Text')}>
+							<Button variant="primary" onClick={() => requestSort('Text')}>
 								Text
-							</button>
+							</Button>
 						</th>
-						<th><button type="button" onClick={() => requestSort('Title')}>
+						<th><Button variant="primary" onClick={() => requestSort('Title')}>
 							Title
-						</button></th>
-						<th><button type="button" onClick={() => requestSort('Author')}>
+						</Button></th>
+						<th><Button variant="primary" onClick={() => requestSort('Author')}>
 							Author
-						</button></th>
-						<th><button type="button" onClick={() => requestSort('Date')}>
+						</Button></th>
+						<th><Button variant="primary" onClick={() => requestSort('Date')}>
 							Date
-						</button></th>
-						<th><button type="button" onClick={() => requestSort('Time')}>
+						</Button></th>
+						<th><Button variant="primary" onClick={() => requestSort('Time')}>
 							Time
-						</button></th>
+						</Button></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,7 +65,7 @@ export default function WordTable(props) {
 							<tr key={currentword._id}>
 								{/* make the text one a link */}
 								{/* <td>{currentword.Text}</td> */}
-								<td> <Link to={{pathname: `/word/${currentword._id}`, state: {currentword}}}>{currentword.Text}</Link> </td>
+								<td> <Link to={{ pathname: `/word/${currentword._id}`, state: { currentword } }}>{currentword.Text}</Link> </td>
 								<td>{currentword.Title}</td>
 								<td>{currentword.Author}</td>
 								<td>{currentword.Date}</td>
@@ -73,7 +74,7 @@ export default function WordTable(props) {
 						)
 					})}
 				</tbody>
-			</table>
+			</Table>
 		</div>
 	)
 }
