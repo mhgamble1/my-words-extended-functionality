@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Router>
       <React.Fragment>
-        <Container>
+        <Container height="100vh" fluid>
           <Navbar />
           <Route exact path="/">
             <WordList />
