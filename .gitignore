@@ -1,2 +1,6 @@
 node_modules
-server/config.env
+*.env
+.git.bfg-report/2022-02-15/16-42-31/cache-stats.txt
+.gitignore
+.git.bfg-report/2022-02-15/16-42-31/object-id-map.old-new.txt
+.git.bfg-report/2022-02-15/16-42-31/deleted-files.txt
