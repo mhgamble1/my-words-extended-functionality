@@ -24,19 +24,6 @@ wordRoutes.route("/word/").get(function (req, res) {
     });
 });
 
-// // This section will get a single word by Text
-// wordRoutes.route("/word/:Text").get(function (req, res) {
-//   console.log("reached here");
-//   // console.log(req.params.Text);
-//   let db_connect = dbo.getDb();
-//   // try with hardcoded query
-//   let myquery = { Text: "lacunae" };
-//   db_connect.collection("words").findOne(myquery, function (err, result) {
-//     if (err) throw err;
-//     res.json(result);
-//   })
-// })
-
 // This section will help you get a single word by id
 wordRoutes.route("/word/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
