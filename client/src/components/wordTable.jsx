@@ -36,7 +36,7 @@ export default function WordTable(props) {
 
 	return (
 		<div>
-			<h1>select a word for dictionary entry</h1>
+			<h1>select a word to see its definition</h1>
 			<Table striped bordered hover>
 				<thead>
 					<tr>
