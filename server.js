@@ -10,10 +10,6 @@ app.use(require("./routes/word"));
 // get driver connection
 const dbo = require("./db/conn");
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
-
 app.use(express.static(__dirname+"/client/build"));
  
 app.listen(port, () => {
