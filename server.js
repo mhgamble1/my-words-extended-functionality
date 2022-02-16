@@ -8,6 +8,10 @@ app.use(express.json());
 app.use(require("./routes/word"));
 // get driver connection
 const dbo = require("./db/conn");
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
  
 app.listen(port, () => {
   // perform a database connection when server starts
