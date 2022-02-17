@@ -14,7 +14,6 @@ export default function FullPageWord() {
 		axios // still need to deal with a "not found" response
 			.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${currentword.Text}`)
 			.then((response) => {
-				console.log(response.data)
 				setData(response.data);
 			})
 			.catch(function (error) {
