@@ -14,7 +14,8 @@ export default class WordList extends Component {
   // This method will get the data from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/word/")
+      .get("https://mywords-extended-functionality.herokuapp.com/word")
+      // .get("http://localhost:5000/word/")
       .then((response) => {
         this.setState({ words: response.data });
       })
@@ -25,7 +26,8 @@ export default class WordList extends Component {
 
   // This method will delete a word based on the method
   deleteWord(id) {
-    axios.delete("http://localhost:5000/" + id).then((response) => {
+    axios.delete("https://mywords-extended-functionality.herokuapp.com/word" + id).then((response) => {
+    // axios.delete("http://localhost:5000/" + id).then((response) => {
       console.log(response.data);
     });
 
