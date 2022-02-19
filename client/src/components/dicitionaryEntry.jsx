@@ -40,7 +40,9 @@ export default function DictionaryEntry(props) {
 										<ListGroup.Item key={index} as="li">
 											<ListGroup variant="flush">
 												<ListGroup.Item key={index + "definition"}><em>definition:</em> {element["definition"]}</ListGroup.Item>
-												<ListGroup.Item key={index + "example"}><em>example:</em> {element["example"]}</ListGroup.Item>
+												{element["example"] != null && 
+													<ListGroup.Item key={index + "example"}><em>example:</em> {element["example"]}</ListGroup.Item>
+												}
 											</ListGroup>
 										</ListGroup.Item>
 									)
