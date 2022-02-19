@@ -40,18 +40,6 @@ export default function DictionaryEntry(props) {
 											<ListGroup key={index} variant="flush">
 												<ListGroup.Item><em>definition:</em> {element["definition"]}</ListGroup.Item>
 												<ListGroup.Item><em>example:</em> {element["example"]}</ListGroup.Item>
-												{/* map over synonyms */}
-												<ListGroup variant="flush">
-													{element["synonyms"].map((element, index) => {
-														<ListGroup.Item key={index}>{element}</ListGroup.Item>
-													})}
-												</ListGroup>
-												{/* map over antonyms */}
-												<ListGroup variant="flush">
-													{element["antonyms"].map((element, index) => {
-														<ListGroup.Item key={index}>{element}</ListGroup.Item>
-													})}
-												</ListGroup>
 											</ListGroup>
 										</ListGroup.Item>
 									)
