@@ -11,35 +11,36 @@ export default function DictionaryEntry(props) {
 	return (
 		<ListGroup variant="flush">
 			{/* let's return the word and just hide the word from the passed location data */}
-			<ListGroup.Item>{word}</ListGroup.Item>
+			<ListGroup.Item key={"word"}>{word}</ListGroup.Item>
 			{/* return phonetic for now */}
 			{/* <p>{phonetic}</p> */}
 
 			{/* map over phonetics */}
 
-			<ListGroup.Item>
-				<Player url={phonetics[0].audio} word={phonetics[0].text}>
-				</Player>
-			</ListGroup.Item>
+			{phonetics.length != 0 && 
+				<ListGroup.Item key={"phonetics"}>
+					<Player url={phonetics[0].audio} word={phonetics[0].text}>
+					</Player>
+				</ListGroup.Item>}
 
 			{/* display origin */}
-			{origin != null && <ListGroup.Item>origin: {origin}</ListGroup.Item>}
+			{origin != null && <ListGroup.Item key={"origin"}>origin: {origin}</ListGroup.Item>}
 
 			{/* map over meanings*/}
 			{/* <ListGroup.Item>meanings:</ListGroup.Item> */}
-			<ListGroup.Item>
+			<ListGroup.Item key={"meanings"}>
 				{meanings.map((element, index) => {
 					return (
 						<ListGroup key={index} variant="flush">
-							<ListGroup.Item><em>part of speech:</em> {element["partOfSpeech"]}</ListGroup.Item>
+							<ListGroup.Item key={"part of speech:"}><em>part of speech:</em> {element["partOfSpeech"]}</ListGroup.Item>
 							{/* map over definitions */}
 							<ListGroup as="ol" numbered variant="flush">
 								{element["definitions"].map((element, index) => {
 									return (
-										<ListGroup.Item as="li">
-											<ListGroup key={index} variant="flush">
-												<ListGroup.Item><em>definition:</em> {element["definition"]}</ListGroup.Item>
-												<ListGroup.Item><em>example:</em> {element["example"]}</ListGroup.Item>
+										<ListGroup.Item key={index} as="li">
+											<ListGroup variant="flush">
+												<ListGroup.Item key={index + "definition"}><em>definition:</em> {element["definition"]}</ListGroup.Item>
+												<ListGroup.Item key={index + "example"}><em>example:</em> {element["example"]}</ListGroup.Item>
 											</ListGroup>
 										</ListGroup.Item>
 									)
