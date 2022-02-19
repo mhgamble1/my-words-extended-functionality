@@ -1,5 +1,5 @@
 import Player from '../utils/useAudio';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
 export default function DictionaryEntry(props) {
 	let data = props.data[0];
